@@ -31,7 +31,7 @@
 	font-size: 16px;
 	display: inline-block;
 	position: relative;
-	left: 33%;
+	left: 40%;
 margin-top: 41px;}
 
 *[contenteditable] { border-radius: 0.25em; min-width: 1em; outline: 0; }
@@ -41,6 +41,63 @@ margin-top: 41px;}
 *[contenteditable]:hover, *[contenteditable]:focus, td:hover *[contenteditable], td:focus *[contenteditable], img.hover { background: #DEF; box-shadow: 0 0 1em 0.5em #DEF; }
 
 span[contenteditable] { display: inline-block; }
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */    
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+}
+
+/* Position the content inside the overlay */
+.overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+}
+
+/* The navigation links inside the overlay */
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+}
+
+/* When you mouse over the navigation links, change their color */
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+/* Position the close button (top right corner) */
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important; /* Override the font-size specified earlier (36px) for all navigation links */
+}
+
+/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+@media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .closebtn {
+        font-size: 40px !important;
+        top: 15px;
+        right: 35px;
+    }
+}
 
 /* heading */
 
@@ -62,7 +119,7 @@ html { font: 16px/1 'Open Sans', sans-serif; overflow: auto; padding: 0.5in; }
 html { background: #999; cursor: default; }
 
 body { box-sizing: border-box; height: 11in; margin: 0 auto; overflow: hidden; padding: 0.5in; width: 8.5in; }
-body { background: #FFF; border-radius: 1px; box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5); }
+body { background: #FFF;  border-radius: 1px; box-shadow: 0 0 1in -0.25in rgba(0, 0, 0, 0.5); }
 
 hr {
     display: block;
@@ -77,7 +134,7 @@ hr {
 /* header */
 
 
-header { margin: 0 0 3em; }
+header { margin: 0 0 0.5em; }
 header:after { clear: both; content: ""; display: table; }
 
 header h1 { background: #FFF; border-radius: 0.25em; color: #000; /*margin: 0 0 1em;*/ padding: 0.5em 0; }
@@ -90,7 +147,7 @@ header input { cursor: pointer; -ms-filter:"progid:DXImageTransform.Microsoft.Al
 
 /* article */
 
-article, article address, table.meta, table.inventory { margin: 0 0 1.5em; }
+article, article address, table.meta, table.inventory { margin: 0 0 0.0em; }
 article:after { clear: both; content: ""; display: table; }
 article h1 { clip: rect(0 0 0 0); position: absolute; }
 
@@ -98,13 +155,14 @@ article address { float: left; font-size: 77%; }
 
 /* table meta & balance */
 
-table.meta, table.balance { float: right; width: 36%; }
+table.meta{ float: right; width: 36%; }
+table.balance { float: right; width: 24.25%; }
 table.meta:after, table.balance:after { clear: both; content: ""; display: table; }
 
 /* table meta */
 
-table.meta th { width: 40%; background: #FFF; border-color: #FFF;}
-table.meta td { width: 60%; background: #FFF; border-color: #FFF;}
+table.meta th { width: 40%; background: #FFF; border-color: #FFF; padding: 0.0em;}
+table.meta td { width: 60%; background: #FFF; border-color: #FFF; padding: 0.0em;}
 
 /* Humari wali custom table */
 
@@ -160,6 +218,24 @@ aside h1 { border-color: #999; border-bottom-style: solid; }
 	float: left;
 	text-align: center;
 	width: 0.6em;
+}
+
+.vertical{
+    float:none;
+    position:absolute;
+    top:35%;
+    right:2.5%;
+    writing-mode:tb-rl;
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform: rotate(90deg);
+    white-space:nowrap;
+    display:block;
+    bottom:0;
+    width:20px;
+    height:20px;
 }
 
 .add, .cut
