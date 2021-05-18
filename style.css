@@ -155,13 +155,13 @@ article address { float: left; font-size: 77%; }
 
 /* table meta & balance */
 
-table.meta{ float: right; width: 36%; }
+table.meta{ float: right; width: 45%; }
 table.balance { float: right; width: 24.25%; }
 table.meta:after, table.balance:after { clear: both; content: ""; display: table; }
 
 /* table meta */
 
-table.meta th { width: 40%; background: #FFF; border-color: #FFF; padding: 0.0em;}
+table.meta th { width: 22%; background: #FFF; border-color: #FFF; padding: 0.0em;}
 table.meta td { width: 60%; background: #FFF; border-color: #FFF; padding: 0.0em;}
 
 /* Humari wali custom table */
